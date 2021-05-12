@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_002103) do
+
+ActiveRecord::Schema.define(version: 2021_05_12_133957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,5 +34,30 @@ ActiveRecord::Schema.define(version: 2021_05_12_002103) do
     t.boolean "organic"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+  
+  create_table "cars", force: :cascade do |t|
+    t.integer "dealership_id"
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "instpected"
+    t.float "price"
+  end
+
+  create_table "dealerships", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "open"
+    t.integer "max_car_capacity"
+  end
+
+  create_table "dealerships_no", id: :integer, default: -> { "nextval('\"Car Dealership_id_seq\"'::regclass)" }, force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "open"
+    t.integer "max_car_capacity"
   end
 end
