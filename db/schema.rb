@@ -25,8 +25,13 @@ ActiveRecord::Schema.define(version: 2021_05_12_002103) do
   end
 
   create_table "produces", force: :cascade do |t|
+    t.integer "market_id"
     t.string "name"
-    t.string "description"
+    t.string "type"
+    t.float "weight"
+    t.float "price_by_weight"
+    t.boolean "organic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
 end
