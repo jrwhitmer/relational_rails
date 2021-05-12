@@ -10,11 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_05_12_133957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "farmers_market_stands", id: :serial, force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text "farm_name"
+    t.text "city"
+    t.boolean "seasonal"
+    t.integer "staffing"
+  end
+
+  create_table "produces", force: :cascade do |t|
+    t.integer "market_id"
+    t.string "name"
+    t.string "type"
+    t.float "weight"
+    t.float "price_by_weight"
+    t.boolean "organic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  
   create_table "cars", force: :cascade do |t|
     t.integer "dealership_id"
     t.string "name"
@@ -39,5 +60,4 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.boolean "open"
     t.integer "max_car_capacity"
   end
-
 end
