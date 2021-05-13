@@ -53,11 +53,4 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.integer "max_car_capacity"
   end
 
-  create_table "dealerships_no", id: :integer, default: -> { "nextval('\"Car Dealership_id_seq\"'::regclass)" }, force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean "open"
-    t.integer "max_car_capacity"
-  end
 end
