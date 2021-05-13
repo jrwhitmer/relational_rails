@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.integer "staffing"
   end
 
-  create_table "produces", force: :cascade do |t|
-    t.integer "market_id"
+  create_table "produce_items", force: :cascade do |t|
+    t.integer "farmers_market_stand_id"
     t.string "name"
     t.string "type"
     t.float "weight"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
   create_table "cars", force: :cascade do |t|
     t.integer "dealership_id"
     t.string "name"

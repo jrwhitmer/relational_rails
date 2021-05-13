@@ -1,0 +1,2 @@
+class ProduceItem < ApplicationRecord
+end

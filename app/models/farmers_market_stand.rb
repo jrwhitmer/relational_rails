@@ -1,0 +1,2 @@
+class FarmersMarketStand < ApplicationRecord
+end
