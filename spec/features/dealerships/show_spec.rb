@@ -9,10 +9,18 @@ RSpec.describe 'dealerships show page' do
   it 'can display dealerships and their attributes on id page' do
     visit "/dealerships/#{@dealership_1.id}"
 
-    expect(page).to have_content(@dealership.name)
-    expect(page).to have_content(@dealership.created_at)
-    expect(page).to have_content(@dealership.updated_at)
-    expect(page).to have_content(@dealership.open)
-    expect(page).to have_content(@dealership.max_car_capacity)
+    expect(page).to have_content(@dealership_1.name)
+    expect(page).to have_content(@dealership_1.created_at)
+    expect(page).to have_content(@dealership_1.updated_at)
+    expect(page).to have_content(@dealership_1.open)
+    expect(page).to have_content(@dealership_1.max_car_capacity)
+
+    visit "/dealerships/#{@dealership_2.id}"
+
+    expect(page).to have_content(@dealership_2.name)
+    expect(page).to have_content(@dealership_2.created_at)
+    expect(page).to have_content(@dealership_2.updated_at)
+    expect(page).to have_content(@dealership_2.open)
+    expect(page).to have_content(@dealership_2.max_car_capacity)
   end
 end
