@@ -1,7 +1,7 @@
-class CreateProduce < ActiveRecord::Migration[5.2]
+class CreateProduceItem < ActiveRecord::Migration[5.2]
   def change
-    create_table :produces do |t|
-      t.integer :market_id
+    create_table :produces_items do |t|
+      t.integer :farmers_market_stand_id
       t.string :name
       t.string :type
       t.float :weight
