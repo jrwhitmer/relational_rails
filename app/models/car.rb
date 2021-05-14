@@ -1,3 +1,3 @@
 class Car < ApplicationRecord
-
-end 
+  belongs_to :dealership
+end

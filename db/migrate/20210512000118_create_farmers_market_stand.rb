@@ -1,4 +1,4 @@
-class CreateFarmersMarketStand < ActiveRecord::Migration[5.2]
+class CreateFarmersMarketStands < ActiveRecord::Migration[5.2]
   def change
     create_table :farmers_market_stands do |t|
       t.string :name

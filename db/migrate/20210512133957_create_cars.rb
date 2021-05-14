@@ -5,7 +5,7 @@ class CreateCars < ActiveRecord::Migration[5.2]
       t.string :name
       t.datetime :created_at
       t.datetime :updated_at
-      t.boolean :instpected
+      t.boolean :inspected
       t.float :price
     end
   end
