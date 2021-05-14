@@ -1,2 +1,3 @@
 class Dealership < ApplicationRecord
-end 
+  has_many :cars
+end
