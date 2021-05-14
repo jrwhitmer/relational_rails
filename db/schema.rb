@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "instpected"
+    t.boolean "inspected"
     t.float "price"
   end
 
@@ -52,4 +52,5 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
   end
 
   add_foreign_key "produce_items", "farmers_market_stands", name: "produces_stand_id_fkey"
+  add_foreign_key "cars", "dealerships", name: "dealership_id", on_update: :cascade, on_delete: :cascade
 end

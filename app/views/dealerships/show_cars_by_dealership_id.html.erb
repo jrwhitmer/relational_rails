@@ -1,0 +1,8 @@
+<% @cars_by_dealership_id.each do |car| %>
+<h1><%= car.name %></h1>
+<p><%= car.dealership_id %></p>
+<p><%= car.created_at %></p>
+<p><%= car.updated_at %></p>
+<p><%= car.inspected %></p>
+<p><%= car.price %></p>
+<% end %>
