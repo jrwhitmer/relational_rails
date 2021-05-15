@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/farmers_market_stands', to: 'farmers_market_stands#index'
   get '/farmers_market_stands/:id', to: 'farmers_market_stands#show'
+  get '/produce_items', to: 'produce_items#index'
   get '/dealerships', to: 'dealerships#index'
   get '/dealerships/:id', to: 'dealerships#show'
   get '/cars', to: 'cars#index'
