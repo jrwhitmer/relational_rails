@@ -9,16 +9,22 @@ RSpec.describe 'produce items show page', type: :feature do
 
     visit "/produce_items/#{@produce_item_1.id}"
 
+    expect(page).to have_content(@produce_item_1.farmers_market_stand_id)
     expect(page).to have_content(@produce_item_1.type)
+    expect(page).to have_content(@produce_item_1.created_at)
+    expect(page).to have_content(@produce_item_1.updated_at)
     expect(page).to have_content(@produce_item_1.weight)
     expect(page).to have_content(@produce_item_1.price_by_weight)
     expect(page).to have_content(@produce_item_1.organic)
 
     visit "/produce_items/#{@produce_item_2.id}"
 
-    # expect(page).to have_content(@produce_item_2.type)
-    # expect(page).to have_content(@produce_item_2.weight)
-    # expect(page).to have_content(@produce_item_2.price_by_weight)
-    # expect(page).to have_content(@produce_item_2.organic)
+    expect(page).to have_content(@produce_item_2.farmers_market_stand_id)
+    expect(page).to have_content(@produce_item_2.type)
+    expect(page).to have_content(@produce_item_2.created_at)
+    expect(page).to have_content(@produce_item_2.updated_at)
+    expect(page).to have_content(@produce_item_2.weight)
+    expect(page).to have_content(@produce_item_2.price_by_weight)
+    expect(page).to have_content(@produce_item_2.organic)
   end
 end
