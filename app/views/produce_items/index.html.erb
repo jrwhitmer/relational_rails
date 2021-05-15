@@ -1,5 +1,8 @@
 <h1>Produce Items</h1>
 <% @produce_items.each do |item| %>
+  <%= item.farmers_market_stand_id %>
+  <%= item.created_at %>
+  <%= item.updated_at %>
   <%= item.type %>
   <%= item.weight %>
   <%= item.price_by_weight %>
