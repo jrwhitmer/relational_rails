@@ -19,4 +19,10 @@ RSpec.describe 'dealerships index page' do
     expect(page.find('p:nth-child(1)')).to have_content(@dealership_1.name)
     expect(page.find('p:nth-child(2)')).to have_content(@dealership_2.name)
   end
+
+  it 'has a link to the cars index page' do
+    visit '/cars'
+
+    expect(page).to have_link('Cars', href: '/cars')
+  end
 end
