@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_133957) do
+ActiveRecord::Schema.define(version: 2021_05_15_200843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
-    t.integer "dealership_id"
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "inspected"
     t.float "price"
+    t.integer "dealership_id"
   end
 
   create_table "dealerships", force: :cascade do |t|
@@ -32,26 +32,25 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.integer "max_car_capacity"
   end
 
-  create_table "farmers_market_stands", force: :cascade do |t|
-    t.string "name"
-    t.string "city"
-    t.boolean "seasonal"
-    t.integer "staffing"
+  create_table "farmers_market_stands", id: :serial, force: :cascade do |t|
+    t.text "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean "seasonal"
+    t.integer "staffing"
+    t.text "city"
   end
 
-  create_table "produce_items", force: :cascade do |t|
+  create_table "produce_items", id: :serial, force: :cascade do |t|
     t.integer "farmers_market_stand_id"
-    t.string "name"
-    t.string "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.float "weight"
     t.float "price_by_weight"
     t.boolean "organic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text "type"
   end
 
-  add_foreign_key "cars", "dealerships", name: "dealership_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "cars", "dealerships", name: "cars_dealership_id_fkey"
   add_foreign_key "produce_items", "farmers_market_stands", name: "farmers_market_stand_id"
 end
