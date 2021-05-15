@@ -13,14 +13,14 @@ RSpec.describe 'produce items index page', type: :feature do
 
     visit "/produce_items"
 
-    expect(page).to have_content(produce_item_1.type)
-    # expect(page).to have_content(produce_item_1.weight)
-    # expect(page).to have_content(produce_item_1.price_by_weight)
-    # expect(page).to have_content(produce_item_1.organic)
-    #
-    # expect(page).to have_content(produce_item_2.type)
-    # expect(page).to have_content(produce_item_2.weight)
-    # expect(page).to have_content(produce_item_2.price_by_weight)
-    # expect(page).to have_content(produce_item_2.organic)
+    expect(page).to have_content(@produce_item_1.type)
+    expect(page).to have_content(@produce_item_1.weight)
+    expect(page).to have_content(@produce_item_1.price_by_weight)
+    expect(page).to have_content(@produce_item_1.organic)
+
+    expect(page).to have_content(@produce_item_2.type)
+    expect(page).to have_content(@produce_item_2.weight)
+    expect(page).to have_content(@produce_item_2.price_by_weight)
+    expect(page).to have_content(@produce_item_2.organic)
   end
 end
