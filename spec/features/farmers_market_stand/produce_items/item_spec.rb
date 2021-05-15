@@ -23,6 +23,8 @@ RSpec.describe 'parent child index page' do
     expect(page).to have_content(@produce_item_1.price_by_weight)
     expect(page).to have_content(@produce_item_1.organic)
 
+    visit "/farmers_market_stands/#{@stand_2.id}/produce_items"
+
     expect(page).to have_content(@produce_item_2.farmers_market_stand_id)
     expect(page).to have_content(@produce_item_2.type)
     expect(page).to have_content(@produce_item_2.created_at)
@@ -30,8 +32,6 @@ RSpec.describe 'parent child index page' do
     expect(page).to have_content(@produce_item_2.weight)
     expect(page).to have_content(@produce_item_2.price_by_weight)
     expect(page).to have_content(@produce_item_2.organic)
-
-    visit "/farmers_market_stands/#{@stand_2.id}/produce_items"
 
     expect(page).to have_content(@produce_item_3.farmers_market_stand_id)
     expect(page).to have_content(@produce_item_3.type)

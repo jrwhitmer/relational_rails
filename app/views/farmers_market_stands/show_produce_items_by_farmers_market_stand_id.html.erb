@@ -1,0 +1,9 @@
+<% @produce_items_by_farmers_market_id.each do |item| %>
+<h1><%= item.type %></h1>
+<p><%= item.farmers_market_stand_id %></p>
+<p><%= item.created_at %></p>
+<p><%= item.updated_at %></p>
+<p><%= item.weight %></p>
+<p><%= item.price_by_weight %></p>
+<p><%= item.organic %></p>
+<% end %>
