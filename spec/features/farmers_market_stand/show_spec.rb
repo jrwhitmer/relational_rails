@@ -8,8 +8,8 @@ RSpec.describe 'farmers market stands index page' do
     visit "/farmers_market_stands/#{@stand_1.id}"
 
     expect(page).to have_content(@stand_1.name)
-    expect(page).to have_content(stand_1.created_at)
-    expect(page).to have_content(stand_1.updated_at)
+    expect(page).to have_content(@stand_1.created_at)
+    expect(page).to have_content(@stand_1.updated_at)
     expect(page).to have_content(@stand_1.city)
     expect(page).to have_content(@stand_1.seasonal)
     expect(page).to have_content(@stand_1.staffing)
