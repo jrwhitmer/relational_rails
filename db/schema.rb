@@ -50,7 +50,4 @@ ActiveRecord::Schema.define(version: 2021_05_12_133957) do
     t.float "price_by_weight"
     t.boolean "organic"
   end
-
-  add_foreign_key "produce_items", "farmers_market_stands", name: "produces_stand_id_fkey"
-  add_foreign_key "cars", "dealerships", name: "dealership_id", on_update: :cascade, on_delete: :cascade
 end

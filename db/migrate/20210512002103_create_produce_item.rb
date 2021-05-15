@@ -1,7 +1,7 @@
 class CreateProduceItems < ActiveRecord::Migration[5.2]
   def change
     create_table :produce_items do |t|
-      t.integer :farmers_market_stand_id
+      add_reference :produce_items, :farmers_market_stand, foreign_key: true
       t.datetime :created_at
       t.datetime :updated_at
       t.string :type
