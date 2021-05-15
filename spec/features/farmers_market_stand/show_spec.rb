@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'farmers market stands index page' do
+RSpec.describe 'farmers market stands show page' do
   it 'can display farmers market stands and their attributes on the id page' do
     @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
     @stand_2 = FarmersMarketStand.create!(name: "Devries Produce", city: "Olathe", seasonal: false, staffing: 5)
