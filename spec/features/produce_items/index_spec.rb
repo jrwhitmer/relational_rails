@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit '/child_table_name'
-# Then I see each Child in the system including the Child's attributes:
-
 RSpec.describe 'produce items index page', type: :feature do
   it 'displays full produce detail' do
     @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
