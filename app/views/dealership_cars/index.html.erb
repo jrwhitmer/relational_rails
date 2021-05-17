@@ -1,6 +1,6 @@
 <a href=/cars>Cars</a>
 <a href=/dealerships>Dealerships</a>
-<% @cars_by_dealership_id.each do |car| %>
+<% @cars.each do |car| %>
 <h1><%= car.name %></h1>
 <p><%= car.dealership_id %></p>
 <p><%= car.created_at %></p>
