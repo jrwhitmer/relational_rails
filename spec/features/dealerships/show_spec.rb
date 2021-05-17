@@ -43,8 +43,14 @@ RSpec.describe 'dealerships show page' do
   end
 
   it 'has a link to the cars index page' do
-    visit '/cars'
+    visit "/dealerships/#{@dealership_1.id}"
 
     expect(page).to have_link('Cars', href: '/cars')
+  end
+
+  it 'has a link to the cars index page' do
+    visit "/dealerships/#{@dealership_1.id}"
+
+    expect(page).to have_link('Dealerships', href: '/dealerships')
   end
 end
