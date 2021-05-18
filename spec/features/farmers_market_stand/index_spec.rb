@@ -10,4 +10,16 @@ RSpec.describe 'farmers market stands index page', type: :feature do
     expect(page).to have_content(@stand_1.name)
     expect(page).to have_content(@stand_2.name)
   end
+
+  it 'has a link to the produce items index page' do
+    visit "/farmers_market_stands"
+
+    expect(page).to have_link('Produce Items', href: '/produce_items')
+  end
+
+  it 'has a link to the farmers market stands index page' do
+    visit "/farmers_market_stands"
+
+    expect(page).to have_link('Farmers Market Stands', href: '/farmers_market_stands')
+  end
 end

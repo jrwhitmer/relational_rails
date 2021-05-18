@@ -49,4 +49,24 @@ RSpec.describe 'parent child index page' do
     expect(page).to have_content(@produce_item_4.price_by_weight)
     expect(page).to have_content(@produce_item_4.organic)
   end
+
+  it 'has a link to the produce items index page' do
+    @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
+    @produce_item_1 = ProduceItem.create!(farmers_market_stand_id: @stand_1.id, type: "spinach", weight: 1.1, price_by_weight: 3.29, organic: true)
+    @produce_item_2 = ProduceItem.create!(farmers_market_stand_id: @stand_1.id, type: "cherries", weight: 2.4, price_by_weight: 7.18, organic: false)
+
+    visit "/farmers_market_stands/#{@stand_1.id}/produce_items"
+
+    expect(page).to have_link('Produce Items', href: '/produce_items')
+  end
+
+  it 'has a link to the farmers market stands index page' do
+    @stand_2 = FarmersMarketStand.create!(name: "Devries Produce", city: "Olathe", seasonal: false, staffing: 5)
+    @produce_item_3 = ProduceItem.create!(farmers_market_stand_id: @stand_2.id, type: "corn", weight: 3.2, price_by_weight: 6.37, organic: false)
+    @produce_item_4 = ProduceItem.create!(farmers_market_stand_id: @stand_2.id, type: "peaches", weight: 2.9, price_by_weight: 8.67, organic: true)
+
+    visit "/farmers_market_stands/#{@stand_2.id}/produce_items"
+
+    expect(page).to have_link('Farmers Market Stands', href: '/farmers_market_stands')
+  end
 end
