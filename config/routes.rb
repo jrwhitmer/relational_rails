@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/farmers_market_stands/:id/produce_items', to: 'farmers_market_stands#show_produce_items_by_farmers_market_stand_id'
   get '/dealerships', to: 'dealerships#index'
   get '/dealerships/:id', to: 'dealerships#show'
+  get '/dealerships/:dealership_id/cars', to: 'dealership_cars#index'
   get '/cars', to: 'cars#index'
   get '/cars/:id', to: 'cars#show'
-  get '/dealerships/:id/cars', to: 'dealerships#show_cars_by_dealership_id'
 end

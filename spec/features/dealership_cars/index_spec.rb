@@ -52,4 +52,16 @@ RSpec.describe 'parent child index page' do
     expect(page).to have_content(@car_4.inspected)
     expect(page).to have_content(@car_4.price)
   end
+
+  it 'has a link to the cars index page' do
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    expect(page).to have_link('Cars', href: '/cars')
+  end
+
+  it 'has a link to the cars index page' do
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    expect(page).to have_link('Dealerships', href: '/dealerships')
+  end
 end

@@ -14,4 +14,16 @@ RSpec.describe 'cars index page' do
     expect(page).to have_content(@car_1.name)
     expect(page).to have_content(@car_2.name)
   end
+
+  it 'has a link to the cars index page' do
+    visit '/cars'
+
+    expect(page).to have_link('Cars', href: '/cars')
+  end
+
+  it 'has a link to the dealerships index page' do
+    visit '/cars'
+
+    expect(page).to have_link('Dealerships', href: '/dealerships')
+  end
 end

@@ -7,7 +7,7 @@ RSpec.describe 'farmers market stands index page', type: :feature do
 
     visit '/farmers_market_stands'
 
-    expect(page).to have_content(stand_1.name)
-    expect(page).to have_content(stand_2.name)
+    expect(page).to have_content(@stand_1.name)
+    expect(page).to have_content(@stand_2.name)
   end
 end

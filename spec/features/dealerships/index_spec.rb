@@ -12,4 +12,23 @@ RSpec.describe 'dealerships index page' do
     expect(page).to have_content(@dealership_1.name)
     expect(page).to have_content(@dealership_2.name)
   end
+
+  it 'can view the sorted names of each dealership in the system' do
+    visit '/dealerships'
+
+    expect(page.body.split("<p>").second).to have_content(@dealership_2.name)
+    expect(page.body.split("<p>").fourth).to have_content(@dealership_1.name)
+  end
+
+  it 'has a link to the cars index page' do
+    visit '/dealerships'
+
+    expect(page).to have_link('Cars', href: '/cars')
+  end
+
+  it 'has a link to the dealerships index page' do
+    visit '/dealerships'
+
+    expect(page).to have_link('Dealerships', href: '/dealerships')
+  end
 end
