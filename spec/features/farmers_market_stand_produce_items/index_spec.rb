@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'parent child index page' do
-  it 'can display all produce items and their attributes associated with the farmers market stand id' do
+RSpec.describe 'produce items index page', type: :feature do
+  it 'displays all produce items and the attributes associated with the farmers market stand id' do
     @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
     @stand_2 = FarmersMarketStand.create!(name: "Devries Produce", city: "Olathe", seasonal: false, staffing: 5)
     @produce_item_1 = ProduceItem.create!(farmers_market_stand_id: @stand_1.id, type: "spinach", weight: 1.1, price_by_weight: 3.29, organic: true)
@@ -12,17 +12,17 @@ RSpec.describe 'parent child index page' do
     visit "/farmers_market_stands/#{@stand_1.id}/produce_items"
 
     expect(page).to have_content(@produce_item_1.farmers_market_stand_id)
-    expect(page).to have_content(@produce_item_1.type)
     expect(page).to have_content(@produce_item_1.created_at)
     expect(page).to have_content(@produce_item_1.updated_at)
+    expect(page).to have_content(@produce_item_1.type)
     expect(page).to have_content(@produce_item_1.weight)
     expect(page).to have_content(@produce_item_1.price_by_weight)
     expect(page).to have_content(@produce_item_1.organic)
 
     expect(page).to have_content(@produce_item_2.farmers_market_stand_id)
-    expect(page).to have_content(@produce_item_2.type)
     expect(page).to have_content(@produce_item_2.created_at)
     expect(page).to have_content(@produce_item_2.updated_at)
+    expect(page).to have_content(@produce_item_2.type)
     expect(page).to have_content(@produce_item_2.weight)
     expect(page).to have_content(@produce_item_2.price_by_weight)
     expect(page).to have_content(@produce_item_2.organic)
@@ -30,19 +30,39 @@ RSpec.describe 'parent child index page' do
     visit "/farmers_market_stands/#{@stand_2.id}/produce_items"
 
     expect(page).to have_content(@produce_item_3.farmers_market_stand_id)
-    expect(page).to have_content(@produce_item_3.type)
     expect(page).to have_content(@produce_item_3.created_at)
     expect(page).to have_content(@produce_item_3.updated_at)
+    expect(page).to have_content(@produce_item_3.type)
     expect(page).to have_content(@produce_item_3.weight)
     expect(page).to have_content(@produce_item_3.price_by_weight)
     expect(page).to have_content(@produce_item_3.organic)
 
     expect(page).to have_content(@produce_item_4.farmers_market_stand_id)
-    expect(page).to have_content(@produce_item_4.type)
     expect(page).to have_content(@produce_item_4.created_at)
     expect(page).to have_content(@produce_item_4.updated_at)
+    expect(page).to have_content(@produce_item_4.type)
     expect(page).to have_content(@produce_item_4.weight)
     expect(page).to have_content(@produce_item_4.price_by_weight)
     expect(page).to have_content(@produce_item_4.organic)
+  end
+
+  it 'has a link to the produce items index page' do
+    @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
+    @produce_item_1 = ProduceItem.create!(farmers_market_stand_id: @stand_1.id, type: "spinach", weight: 1.1, price_by_weight: 3.29, organic: true)
+    @produce_item_2 = ProduceItem.create!(farmers_market_stand_id: @stand_1.id, type: "cherries", weight: 2.4, price_by_weight: 7.18, organic: false)
+
+    visit "/farmers_market_stands/#{@stand_1.id}/produce_items"
+
+    expect(page).to have_link('Produce Items', href: '/produce_items')
+  end
+
+  it 'has a link to the farmers market stands index page' do
+    @stand_2 = FarmersMarketStand.create!(name: "Devries Produce", city: "Olathe", seasonal: false, staffing: 5)
+    @produce_item_3 = ProduceItem.create!(farmers_market_stand_id: @stand_2.id, type: "corn", weight: 3.2, price_by_weight: 6.37, organic: false)
+    @produce_item_4 = ProduceItem.create!(farmers_market_stand_id: @stand_2.id, type: "peaches", weight: 2.9, price_by_weight: 8.67, organic: true)
+
+    visit "/farmers_market_stands/#{@stand_2.id}/produce_items"
+
+    expect(page).to have_link('Farmers Market Stands', href: '/farmers_market_stands')
   end
 end
