@@ -1,5 +1,6 @@
 <a href=/produce_items>Produce Items</a>
 <a href=/farmers_market_stands>Farmers Market Stands</a>
+<%= link_to 'Associated Produce Items', "/farmers_market_stands/#{@farmers_market_stand.id}/produce_items" %>
 <h1><%= @farmers_market_stand.name %></h1>
 <p><%= @farmers_market_stand.created_at %></p>
 <p><%= @farmers_market_stand.updated_at %></p>
