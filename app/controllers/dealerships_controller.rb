@@ -21,4 +21,20 @@ class DealershipsController < ApplicationController
       dealership.save
       redirect_to '/dealerships'
   end
+
+  def edit
+    @dealership = Dealership.find(params[:id])
+  end
+
+  def update
+    dealership = Dealership.find(params[:id])
+    dealership.update({
+      name: params[:name],
+      updated_at: DateTime.now,
+      open: params[:open],
+      max_car_capacity: params[:max_car_capacity]
+      })
+      dealership.save
+      redirect_to "/dealerships/#{dealership.id}"
+  end
 end
