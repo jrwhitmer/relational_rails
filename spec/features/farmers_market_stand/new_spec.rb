@@ -16,7 +16,7 @@ RSpec.describe 'the FarmersMarketStand creation' do
       visit '/farmers_market_stands/new'
       #
       fill_in('Name', with: 'Red Wagon Organic Farm') #execution
-      click_button('Create Farmers Markegit t Stand')
+      click_button('Create Farmers Market Stand')
       #
       expect(current_path).to eq("/farmers_market_stands") #expectation
       expect(page).to have_content("Red Wagon Organic Farm")
