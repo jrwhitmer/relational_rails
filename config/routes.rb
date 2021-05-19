@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   post '/dealerships', to: 'dealerships#create'
   get '/dealerships/:id/edit', to: 'dealerships#edit'
   patch '/dealerships/:id', to: 'dealerships#update'
+  get '/dealerships/:id/cars/new', to: 'dealership_cars#new'
+  post '/dealerships/:id/cars', to: 'dealership_cars#create'
 end

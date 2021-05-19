@@ -8,3 +8,4 @@
 <p><%= car.inspected %></p>
 <p><%= car.price %></p>
 <% end %>
+<%= button_to 'Create Car', "/dealerships/#{@dealership.id}/cars/new", :method => :get %>
