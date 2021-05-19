@@ -12,6 +12,16 @@ RSpec.describe 'the FarmersMarketStand creation' do
     expect(current_path).to eq('/farmers_market_stands/new')
   end
 
+  it 'can create a new farmers market stand' do
+      visit '/farmers_market_stands/new'
+      #
+      fill_in('Name', with: 'Red Wagon Organic Farm') #execution
+      click_button('Create Farmers Markegit t Stand')
+      #
+      expect(current_path).to eq("/farmers_market_stands") #expectation
+      expect(page).to have_content("Red Wagon Organic Farm")
+    end
+
 # When I click this link
 # Then I am taken to '/parents/new' where I  see a form for a new parent record
 # When I fill out the form with a new parent's attributes:
