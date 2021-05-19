@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = Car.by_true
   end
 
   def show

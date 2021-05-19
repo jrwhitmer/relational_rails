@@ -26,4 +26,17 @@ RSpec.describe 'cars index page' do
 
     expect(page).to have_link('Dealerships', href: '/dealerships')
   end
+
+#   As a visitor
+# When I visit the child index
+# Then I only see records where the boolean column is `true`
+  it 'only views the names of the cars that have been inspected' do
+    @car_3 = Car.create!(dealership_id: @dealership_2.id, name: "Honda Civic", created_at: DateTime.new(2018, 7, 2, 10, 05, 22), updated_at: DateTime.new(2020, 3, 10, 12, 15, 30), inspected: false, price: 16500.99)
+
+    visit '/cars'
+
+    expect(page).to have_content(@car_1.name)
+    expect(page).to have_content(@car_2.name)
+    expect(page).to have_no_content(@car_3.name)
+  end
 end
