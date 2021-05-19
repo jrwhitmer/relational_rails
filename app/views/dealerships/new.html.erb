@@ -1,4 +1,4 @@
-<% form_with url:'/dealerships', method: :post, local:true do |form| %>
+<!-- <% form_with url:'/dealerships', method: :post, local:true do |form| %>
   <%= form.label :Name %>
   <%= form.text_field :Name %>
 
@@ -9,7 +9,7 @@
   <%= form.text_field :Max_car_capacity %>
 
   <%= form.submit "Create Dealership" %>
-<% end %>
+<% end %> -->
 
 <form action="/dealerships" method= "post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

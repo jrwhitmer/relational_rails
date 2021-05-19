@@ -13,8 +13,8 @@ class DealershipsController < ApplicationController
   def create
     dealership = Dealership.new({
       name: params[:name],
-      # created_at: DateTime.now,
-      # updated_at: DateTime.now,
+      created_at: DateTime.now,
+      updated_at: DateTime.now,
       open: params[:open],
       max_car_capacity: params[:max_car_capacity]
       })
