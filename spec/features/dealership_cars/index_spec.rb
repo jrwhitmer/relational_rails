@@ -64,4 +64,40 @@ RSpec.describe 'parent child index page' do
 
     expect(page).to have_link('Dealerships', href: '/dealerships')
   end
+#   As a visitor
+# When I visit a Parent Childs Index page
+# Then I see a link to add a new adoptable child for that parent "Create Child"
+# When I click the link
+# I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
+# When I fill in the form with the child's attributes:
+# And I click the button "Create Child"
+# Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
+# a new child object/row is created for that parent,
+# and I am redirected to the Parent Childs Index page where I can see the new child listed
+  it 'has a link to create a new car associated with this dealership' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    expect(page).to have_button('Create Car')
+  end
+
+  it 'can take the user to new page when create car is clicked' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    click_button('Create Car')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/cars/new")
+  end
+
+  it 'can submit the new car form and redirect the user to the index page' do
+    visit "/dealerships/#{@dealership_1.id}/cars/new"
+
+    fill_in('Name', with: 'Honda Civic')
+    fill_in('Inspected', with: 'false')
+    fill_in('Price', with: '13440')
+    click_button('Create Car')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/cars")
+    expect(page).to have_content('Honda Civic')
+  end
+
 end
