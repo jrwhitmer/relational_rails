@@ -9,3 +9,8 @@
 <p><%= car.price %></p>
 <% end %>
 <%= button_to 'Create Car', "/dealerships/#{@dealership.id}/cars/new", :method => :get %>
+
+<form action="/dealerships/<%= @dealership.id %>/cars" method="get">
+  <input type="hidden" name="_method" value="by_name">
+  <input type="submit" value="Sort Cars By Name"/>
+</form>

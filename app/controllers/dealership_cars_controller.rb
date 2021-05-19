@@ -2,6 +2,9 @@ class DealershipCarsController < ApplicationController
   def index
     @dealership = Dealership.find(params[:dealership_id])
     @cars = @dealership.cars
+    if !params[:_method].nil?
+      @cars= @dealership.cars.by_name
+    end
   end
 
   def new
@@ -21,4 +24,5 @@ class DealershipCarsController < ApplicationController
       car.save
       redirect_to "/dealerships/#{@dealership.id}/cars"
   end
+
 end
