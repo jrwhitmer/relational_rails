@@ -4,3 +4,6 @@
 <% @dealerships.each do |dealership| %>
   <p><%= dealership.name %><p>
 <% end %>
+<form action="/dealerships/new">
+  <input type="submit" value="New Dealership"/>
+</form>

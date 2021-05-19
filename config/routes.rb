@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/produce_items', to: 'produce_items#index'
   get '/produce_items/:id', to: 'produce_items#show'
   get '/dealerships', to: 'dealerships#index'
+  get '/dealerships/new', to: 'dealerships#new'
   get '/dealerships/:id', to: 'dealerships#show'
   get '/dealerships/:dealership_id/cars', to: 'dealership_cars#index'
   get '/cars', to: 'cars#index'
   get '/cars/:id', to: 'cars#show'
+  post '/dealerships', to: 'dealerships#create'
 end
