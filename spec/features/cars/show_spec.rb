@@ -39,4 +39,40 @@ RSpec.describe 'cars show page' do
 
     expect(page).to have_link('Dealerships', href: '/dealerships')
   end
+
+#   As a visitor
+# When I visit a Child Show page
+# Then I see a link to update that Child "Update Child"
+# When I click the link
+# I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+# When I click the button to submit the form "Update Child"
+# Then a `PATCH` request is sent to '/child_table_name/:id',
+# the child's data is updated,
+# and I am redirected to the Child Show page where I see the Child's updated information
+
+  it 'has a link to update car' do
+    visit "/cars/#{@car_1.id}"
+
+    expect(page).to have_button('Update Car')
+  end
+
+  it 'can take the user to the edit page when update button is clicked' do
+    visit "/cars/#{@car_1.id}"
+
+    click_button('Update Car')
+
+    expect(current_path).to eq("/cars/#{@car_1.id}/edit")
+  end
+
+  it 'can submit the edit form and take the user to cars show page' do
+    visit "/cars/#{@car_1.id}/edit"
+
+    fill_in('Name', with: 'Honda Civic')
+    fill_in('Inspected', with: 'false')
+    fill_in('Price', with: '12900')
+    click_button('Update Car')
+
+    expect(current_path).to eq("/cars/#{@car_1.id}")
+    expect(page).to have_content('Honda Civic')
+  end
 end
