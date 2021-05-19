@@ -59,4 +59,40 @@ RSpec.describe 'dealerships show page' do
 
     expect(page).to have_link('Associated Cars', href: "/dealerships/#{@dealership_1.id}/cars")
   end
+
+  it 'has a link to update dealership' do
+    visit "/dealerships/#{@dealership_1.id}"
+
+    expect(page).to have_button('Update Dealership')
+  end
+
+  it 'takes the user to the edit page when you click update dealership' do
+    visit "/dealerships/#{@dealership_1.id}"
+
+    click_button('Update Dealership')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/edit")
+  end
+
+  it 'can submit the edit form and redirect the user to dealership show page' do
+    visit "/dealerships/#{@dealership_1.id}/edit"
+
+    fill_in('Name', with: "Ed Voyles Chrysler")
+    fill_in('Open', with: "false")
+    fill_in('Max Car Capacity', with: "75")
+
+    click_button("Submit")
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}")
+    expect(page).to have_content(@dealership_1.name)
+    expect(page).to have_content(@dealership_1.created_at)
+    expect(page).to have_content(@dealership_1.updated_at)
+    expect(page).to have_content(@dealership_1.open)
+    expect(page).to have_content(@dealership_1.max_car_capacity)
+
+    expect(@dealership_1.name).to eq("Ed Voyles Chrysler")
+    expect(@dealership_1.open).to eq(false)
+    expect(@dealership_1.max_car_capacity).to eq(75)
+    expect(@dealership_1.updated_at).to not_eq(DateTime.new(2020, 3, 10, 12, 15, 30))
+  end
 end
