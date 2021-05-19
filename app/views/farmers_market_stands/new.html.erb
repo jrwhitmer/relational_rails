@@ -1,0 +1,6 @@
+<%= form_with url: '/farmers_market_stands', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.submit "Create Farmers Market Stand" %>
+<% end %>
