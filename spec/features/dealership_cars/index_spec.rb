@@ -102,5 +102,37 @@ RSpec.describe 'parent child index page' do
     expect(page.body.split("<h1>").second).to have_content(@car_2.name)
     expect(page.body.split("<h1>").third).to have_content(@car_1.name)
   end
+#   As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to edit that child's info
+# When I click the link
+# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
 
+  it 'has a link next to every car to take user to edit page' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    expect(page).to have_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(page).to have_link('Edit', href: "/cars/#{@car_2.id}/edit")
+
+    click_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_1.id}/edit")
+
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    click_link('Edit', href: "/cars/#{@car_2.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_2.id}/edit")
+
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    expect(page).to have_link('Edit', href: "/cars/#{@car_3.id}/edit")
+    expect(page).to have_link('Edit', href: "/cars/#{@car_4.id}/edit")
+
+    click_link('Edit', href: "/cars/#{@car_3.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_3.id}/edit")
+
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    click_link('Edit', href: "/cars/#{@car_4.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_4.id}/edit")
+  end
 end
