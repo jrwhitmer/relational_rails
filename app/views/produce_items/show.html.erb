@@ -7,3 +7,4 @@
 <p><%= @produce_item.weight %></p>
 <p><%= @produce_item.price_by_weight %></p>
 <p><%= @produce_item.organic %></p>
+<%= link_to 'Update Produce Item', "/produce_items/#{@produce_item.id}/edit", :method => :get %>

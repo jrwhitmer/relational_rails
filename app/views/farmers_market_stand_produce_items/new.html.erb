@@ -1,0 +1,11 @@
+<%= form_with url: "/farmers_market_stands/#{@farmers_market_stand.id}/produce_items", method: :post, local: true do |form| %>
+  <%= form.label :type %>
+  <%= form.text_field :type %>
+  <%= form.label :weight %>
+  <%= form.text_field :weight %>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <%= form.label :organic %>
+  <%= form.text_field :organic %>
+  <%= form.submit "Create Produce Item" %>
+<% end %>

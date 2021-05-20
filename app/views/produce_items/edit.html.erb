@@ -1,0 +1,13 @@
+<form action="/produce_items/<%= @produce_item.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="type">Type</label>
+  <input type="text" name="type" id="type" value=<%= @produce_item.type %>><br>
+  <label for="weight">Weight</label>
+  <input type= "text" name="weight" id="weight" value=<%= @produce_item.weight %>><br>
+  <label for="price">Price by Weight</label>
+  <input type="text" name="price" id="price" value=<%= @produce_item.price_by_weight %>><br>
+  <label for="organic">Organic</label>
+  <input type="text" name="organic" id="organic" value=<%= @produce_item.organic %>><br>
+  <input type="submit" value="Update Produce Item"/>
+</form>
