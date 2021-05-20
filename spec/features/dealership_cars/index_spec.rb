@@ -102,11 +102,6 @@ RSpec.describe 'parent child index page' do
     expect(page.body.split("<h1>").second).to have_content(@car_2.name)
     expect(page.body.split("<h1>").third).to have_content(@car_1.name)
   end
-#   As a visitor
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
 
   it 'has a link next to every car to take user to edit page' do
     visit "/dealerships/#{@dealership_1.id}/cars"

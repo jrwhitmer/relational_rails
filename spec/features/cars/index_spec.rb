@@ -36,4 +36,20 @@ RSpec.describe 'cars index page' do
     expect(page).to have_content(@car_2.name)
     expect(page).to have_no_content(@car_3.name)
   end
+
+  it 'has a link by each car to bring the user to the edit page for that car' do
+    visit "/cars"
+
+    expect(page).to have_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(page).to have_link('Edit', href: "/cars/#{@car_2.id}/edit")
+
+    click_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_1.id}/edit")
+
+    visit "/cars"
+
+    click_link('Edit', href: "/cars/#{@car_2.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_2.id}/edit")
+
+  end
 end
