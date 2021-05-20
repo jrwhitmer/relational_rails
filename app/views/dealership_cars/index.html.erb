@@ -1,10 +1,16 @@
 <a href=/cars>Cars</a>
 <a href=/dealerships>Dealerships</a>
 <% @cars.each do |car| %>
-<h1><%= car.name %></h1>
+<h1><%= car.name %></h1> <%= link_to 'Edit', "/cars/#{car.id}/edit" %>
 <p><%= car.dealership_id %></p>
 <p><%= car.created_at %></p>
 <p><%= car.updated_at %></p>
 <p><%= car.inspected %></p>
 <p><%= car.price %></p>
 <% end %>
+<%= button_to 'Create Car', "/dealerships/#{@dealership.id}/cars/new", :method => :get %>
+
+<form action="/dealerships/<%= @dealership.id %>/cars" method="get">
+  <input type="hidden" name="_method" value="by_name">
+  <input type="submit" value="Sort Cars By Name"/>
+</form>

@@ -6,3 +6,4 @@
 <p><%= @car.updated_at%></p>
 <p><%= @car.inspected %></p>
 <p><%= @car.price %></p>
+<%= button_to 'Update Car', "/cars/#{@car.id}/edit", :method => :get %>

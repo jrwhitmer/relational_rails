@@ -1,0 +1,11 @@
+<form action="/dealerships/<%= @dealership.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" value=<%= @dealership.name %>><br>
+  <label for="open">Open</label>
+  <input type= "text" name="open" id="open" value=<%= @dealership.open %>><br>
+  <label for="max_car_capacity">Max Car Capacity</label>
+  <input type="text" name="max_car_capacity" id="max_car_capacity" value=<%= @dealership.max_car_capacity %>><br>
+  <input type="submit" value="Submit"/>
+</form>

@@ -39,4 +39,30 @@ RSpec.describe 'cars show page' do
 
     expect(page).to have_link('Dealerships', href: '/dealerships')
   end
+
+  it 'has a link to update car' do
+    visit "/cars/#{@car_1.id}"
+
+    expect(page).to have_button('Update Car')
+  end
+
+  it 'can take the user to the edit page when update button is clicked' do
+    visit "/cars/#{@car_1.id}"
+
+    click_button('Update Car')
+
+    expect(current_path).to eq("/cars/#{@car_1.id}/edit")
+  end
+
+  it 'can submit the edit form and take the user to cars show page' do
+    visit "/cars/#{@car_1.id}/edit"
+
+    fill_in('Name', with: 'Honda Civic')
+    fill_in('Inspected', with: 'false')
+    fill_in('Price', with: '12900')
+    click_button('Update Car')
+
+    expect(current_path).to eq("/cars/#{@car_1.id}")
+    expect(page).to have_content('Honda Civic')
+  end
 end
