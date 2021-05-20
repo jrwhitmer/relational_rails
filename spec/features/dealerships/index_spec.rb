@@ -55,4 +55,22 @@ RSpec.describe 'dealerships index page' do
     expect(current_path).to eq('/dealerships')
     expect(page).to have_content('Sydney Hardy Toyota')
   end
+
+  it 'has a link by each dealership to the edit page for that dealership' do
+
+    visit '/dealerships'
+
+    expect(page).to have_link('Edit', href: "/dealerships/#{@dealership_1.id}/edit")
+    expect(page).to have_link('Edit', href: "/dealerships/#{@dealership_2.id}/edit")
+
+    click_link('Edit', href: "/dealerships/#{@dealership_1.id}/edit")
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/edit")
+
+    visit '/dealerships'
+
+    click_link('Edit', href: "/dealerships/#{@dealership_2.id}/edit")
+
+    expect(current_path).to eq("/dealerships/#{@dealership_2.id}/edit")
+  end
 end

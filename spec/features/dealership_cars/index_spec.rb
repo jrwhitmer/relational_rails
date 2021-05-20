@@ -91,12 +91,6 @@ RSpec.describe 'parent child index page' do
     expect(page).to have_content('Honda Civic')
   end
 
-#   As a visitor
-# When I visit the Parent's children Index Page
-# Then I see a link to sort children in alphabetical order
-# When I click on the link
-# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
-
   it 'has a link to sort the cars alphabetically and reroutes to the same page with sorted cars' do
     visit "/dealerships/#{@dealership_1.id}/cars"
 

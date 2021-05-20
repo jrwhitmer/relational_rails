@@ -3,6 +3,7 @@
 <h1>Dealerships</h1>
 <% @dealerships.each do |dealership| %>
   <p><%= dealership.name %><p>
+  <%= link_to 'Edit', "/dealerships/#{dealership.id}/edit" %>
 <% end %>
 <form action="/dealerships/new">
   <input type="submit" value="New Dealership"/>
