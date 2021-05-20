@@ -7,3 +7,4 @@
 <p><%= @dealership.open %></p>
 <p><%= @dealership.max_car_capacity %></p>
 <p><%= @dealership.cars_count %></p>
+<%= button_to 'Update Dealership', "/dealerships/#{@dealership.id}/edit", :method => :get %>

@@ -64,4 +64,70 @@ RSpec.describe 'parent child index page' do
 
     expect(page).to have_link('Dealerships', href: '/dealerships')
   end
+
+  it 'has a link to create a new car associated with this dealership' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    expect(page).to have_button('Create Car')
+  end
+
+  it 'can take the user to new page when create car is clicked' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    click_button('Create Car')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/cars/new")
+  end
+
+  it 'can submit the new car form and redirect the user to the index page' do
+    visit "/dealerships/#{@dealership_1.id}/cars/new"
+
+    fill_in('Name', with: 'Honda Civic')
+    fill_in('Inspected', with: 'false')
+    fill_in('Price', with: '13440')
+    click_button('Create Car')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/cars")
+    expect(page).to have_content('Honda Civic')
+  end
+
+  it 'has a link to sort the cars alphabetically and reroutes to the same page with sorted cars' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    expect(page).to have_button('Sort Cars By Name')
+
+    click_button('Sort Cars By Name')
+
+    expect(current_path).to eq("/dealerships/#{@dealership_1.id}/cars")
+    expect(page.body.split("<h1>").second).to have_content(@car_2.name)
+    expect(page.body.split("<h1>").third).to have_content(@car_1.name)
+  end
+
+  it 'has a link next to every car to take user to edit page' do
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    expect(page).to have_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(page).to have_link('Edit', href: "/cars/#{@car_2.id}/edit")
+
+    click_link('Edit', href: "/cars/#{@car_1.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_1.id}/edit")
+
+    visit "/dealerships/#{@dealership_1.id}/cars"
+
+    click_link('Edit', href: "/cars/#{@car_2.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_2.id}/edit")
+
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    expect(page).to have_link('Edit', href: "/cars/#{@car_3.id}/edit")
+    expect(page).to have_link('Edit', href: "/cars/#{@car_4.id}/edit")
+
+    click_link('Edit', href: "/cars/#{@car_3.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_3.id}/edit")
+
+    visit "/dealerships/#{@dealership_2.id}/cars"
+
+    click_link('Edit', href: "/cars/#{@car_4.id}/edit")
+    expect(current_path).to eq("/cars/#{@car_4.id}/edit")
+  end
 end

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_200843) do
     t.float "weight"
     t.float "price_by_weight"
     t.boolean "organic"
-    t.text "type"
+    t.text "type" #change to 'name'
   end
 
   add_foreign_key "cars", "dealerships", name: "cars_dealership_id_fkey"
