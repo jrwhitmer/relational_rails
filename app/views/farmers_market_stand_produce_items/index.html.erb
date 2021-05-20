@@ -9,3 +9,4 @@
 <p><%= item.price_by_weight %></p>
 <p><%= item.organic %></p>
 <% end %>
+<%= link_to "Create New Produce Item", "/farmers_market_stands/#{@farmers_market_stand.id}/produce_items/new", :method => :get %>

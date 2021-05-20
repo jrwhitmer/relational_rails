@@ -39,7 +39,7 @@ RSpec.describe 'farmers market stands show page' do
     expect(page).to have_link('Farmers Market Stands', href: '/farmers_market_stands')
   end
 
-  it 'has a link to the produce itesms by farmers market stand selected page' do
+  it 'has a link to the produce items by farmers market stand selected page' do
     @stand_1 = FarmersMarketStand.create!(name: "Red Wagon Organic Farm", city: "Boulder", seasonal: true, staffing: 3)
 
     visit "/farmers_market_stands/#{@stand_1.id}"
