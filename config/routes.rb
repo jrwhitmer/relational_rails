@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/farmers_market_stands/:id', to: 'farmers_market_stands#show'
   get '/farmers_market_stands/:id/produce_items/new', to: 'farmers_market_stand_produce_items#new'
   post '/farmers_market_stands/:id/produce_items', to: 'farmers_market_stand_produce_items#create'
+  get '/produce_items/:id/edit', to: 'produce_items#edit'
+  patch '/produce_items/:id', to: 'produce_items#update'
   get '/dealerships', to: 'dealerships#index'
   get '/dealerships/:id', to: 'dealerships#show'
   get '/dealerships/:dealership_id/cars', to: 'dealership_cars#index'
